@@ -242,6 +242,6 @@ Notice: lead with a summary, group by insight, one metric per sub-bullet, narrat
 
 # Model Attribution
 At the END of every response, add a small footer line:
-`🤖 Model: [your model name]`
-For example: `🤖 Model: gpt-4o-mini` or `🤖 Model: gpt-4o` or `🤖 Model: claude-sonnet-4-6`
+`:robot_face: Model: [your model name]`
+For example: `:robot_face: Model: gpt-4o-mini` or `:robot_face: Model: gpt-4o` or `:robot_face: Model: claude-sonnet-4-6`
 This helps the team know which model generated the response. ALWAYS include this.
