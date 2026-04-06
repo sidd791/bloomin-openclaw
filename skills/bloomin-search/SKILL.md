@@ -90,25 +90,19 @@ If the user asks about "current" or "live" ad data, route to Rule1. If they ask 
 
 ## Response Format (see SOUL.md for full rules)
 
-Write responses as **clean prose with bullet points** — not tables or raw data dumps. The user wants insights they can act on, not database output.
+Write like a smart colleague — **human, conversational, actionable**. Not a formatted report. Data-backed but not drowning in numbers.
 
-⛔ **Never show internal metadata** — no author handles, no video IDs, no record IDs, no similarity scores. These are internal and should never appear in the response.
+⛔ **Never show internal metadata** — no author handles, no video IDs, no record IDs, no similarity scores.
 
 **Example response snippet (correct format):**
 
-> **Persona2 — WINNER across 4 weeks**
->
-> - Dec 15 week: $86 spend, 2.15x ROAS, 3.0% CTR
-> - Jan 19 week: $65 spend, 2.87x ROAS, 3.3% CTR
->
-> Analysis: ROAS trending upward across all 4 data points. Consider increasing spend.
->
-> 🤖 Model: claude-opus-4-6
+> Persona2 has been the consistent winner — flagged WINNER all 4 weeks with ROAS climbing from 2.15x to 2.87x. I'd shift more budget here while it's hot.
 
 **Rules:**
 - All metrics must come from the actual tool output — no invented numbers
-- No inference without "Analysis:" / "Strategic note:" / "Gap:" prefix
+- Weave your interpretation naturally into the response — don't bolt on rigid "Analysis:" labels unless it's truly non-obvious
 - Do NOT include any data source footer — no collection names or tool names in the response
+- Show top 3 items by default, not every result. Mention if more are available.
 
 ## Examples
 
