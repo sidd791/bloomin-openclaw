@@ -66,10 +66,12 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - Anything that leaves the machine
 - Anything you're uncertain about
 
-## Slack Channel Rules
-- ALL reports, intelligence, and automated messages → `C0AM45T4XT8` ONLY
-- ❌ NEVER send to `C0AM45T4XT8` — not reports, not notifications, nothing
-- This applies to ALL subagents, cron jobs, and direct sends
+## Channel Rules
+- **Web chat** is the primary channel for interactive conversations (via OpenClaw Gateway HTTP/WS)
+- **Slack** remains active for reports and automation:
+  - ALL reports, intelligence, and automated messages → `C0AM45T4XT8` ONLY
+  - ❌ NEVER send to `C0AM45T4XT8` — not reports, not notifications, nothing
+  - This applies to ALL subagents, cron jobs, and direct sends
 
 ## Group Chats
 
