@@ -18,7 +18,7 @@ Bloomin intelligence is available as MCP tools. Call them directly by name — n
 | `query` | string | yes | Natural language search query |
 | `collection` | string | no (default: `bloomin_tiktok`) | Which Milvus collection to search |
 | `top_k` | integer | no (default: 10) | Number of results (1-100) |
-| `record_type` | string | no | Filter for creative_testing: `ad`, `angle_summary`, `dimension_summary`, `fatiguing_ad` |
+| `record_type` | string | no | Filter by record type (see per-collection values below) |
 | `source_type` | string | no | Filter by source type |
 
 ### `bloomin_list_pages` — Browse canonical pages
@@ -37,7 +37,7 @@ No parameters. Returns status of Postgres, Milvus, and upstream APIs.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `source` | string | yes | `tiktok` or `creative_testing` |
+| `source` | string | yes | `tiktok`, `creative_testing`, or `reddit` |
 | `full` | boolean | no (default: false) | Full resync vs incremental |
 
 ## Collections
@@ -46,6 +46,7 @@ No parameters. Returns status of Postgres, Milvus, and upstream APIs.
 |---|---|---|
 | `bloomin_tiktok` | TikTok video intelligence — hooks, engagement, authors, ingredient mentions | TikTok trends, hooks, content patterns, engagement |
 | `bloomin_creative_testing` | Creative testing intelligence — ad performance, angle summaries, dimension breakdowns, fatiguing ads | Ad ROAS, CTR, winning/losing angles, creative fatigue, spend, persona performance, concept codes |
+| `bloomin_reddit` | Reddit ICP intelligence — raw posts, per-post analysis, ICP profiles, aggregated summaries | Pain points, desire language, ICP archetypes, objections, emotional states, purchase intent, community insights |
 
 ## Creative Testing Record Types
 
@@ -55,6 +56,15 @@ No parameters. Returns status of Postgres, Milvus, and upstream APIs.
 | `angle_summary` | Aggregated angle performance — winner/loser tags, avg ROAS, avg CTR |
 | `dimension_summary` | Performance by dimension (persona, format, etc.) with ROAS delta |
 | `fatiguing_ad` | Ads showing fatigue — ROAS drop %, CTR drop % over 7d vs 14d |
+
+## Reddit Record Types
+
+| Record Type | Content |
+|---|---|
+| `post` | Raw Reddit posts (title, body, subreddit, score) — verbatim ICP language |
+| `insight` | Per-post Claude analysis — pain points, emotional states, desire triggers, objections, language patterns, topic tags, ICP confidence score |
+| `profile` | Synthesized ICP archetypes (e.g. "The Desire Amnesiac") — distilled pain points, desire triggers, confidence score, post count |
+| `summary` | Aggregated ICP summaries — top pain points with quotes, top language patterns, emerging topics, date range |
 
 ## When to Use This Skill
 
@@ -66,6 +76,9 @@ Use this skill for **embedded intelligence** — historical data already synced 
 - Product signals (ingredients, cortisol, hormones)
 - TikTok content performance and hook patterns
 - Historical creative testing performance — weekly ad ROAS/CTR trends, winning/losing angles, fatiguing ads
+- Reddit community intelligence — raw ICP language, pain points, desire triggers, emotional states
+- ICP profiles and archetypes from Reddit analysis
+- Aggregated ICP summaries — top pain points, language patterns, emerging topics
 
 ## When NOT to Use This Skill
 
@@ -85,8 +98,9 @@ If the user asks about "current" or "live" ad data, route to Rule1. If they ask 
 
 1. **TikTok** (`bloomin_tiktok`) for hook patterns, engagement data, and content trends
 2. **Creative testing** (`bloomin_creative_testing`) for ad performance, winning angles, ROAS, fatigue signals
-3. **Cross-reference** results across collections for stronger insights
-4. **Summarize** findings as clean prose — see SOUL.md grounding rules
+3. **Reddit** (`bloomin_reddit`) for ICP psychology, pain points, desire language, objections, community insights
+4. **Cross-reference** results across collections for stronger insights
+5. **Summarize** findings as clean prose — see SOUL.md grounding rules
 
 ## Response Format (see SOUL.md for full rules)
 
@@ -114,3 +128,15 @@ Write like a smart colleague — **human, conversational, actionable**. Not a fo
 
 **Fatiguing ads:**
 → Call `bloomin_search` with `query="fatiguing ads ROAS drop"`, `collection="bloomin_creative_testing"`, `record_type="fatiguing_ad"`
+
+**ICP pain points from Reddit:**
+→ Call `bloomin_search` with `query="pain points low desire hormonal stress"`, `collection="bloomin_reddit"`, `record_type="insight"`
+
+**Reddit ICP profiles:**
+→ Call `bloomin_search` with `query="ICP archetypes desire amnesiac"`, `collection="bloomin_reddit"`, `record_type="profile"`
+
+**What language are women using in Reddit communities:**
+→ Call `bloomin_search` with `query="language patterns desire triggers objections"`, `collection="bloomin_reddit"`, `record_type="post"`
+
+**Aggregated Reddit intelligence summary:**
+→ Call `bloomin_search` with `query="top pain points emerging topics"`, `collection="bloomin_reddit"`, `record_type="summary"`

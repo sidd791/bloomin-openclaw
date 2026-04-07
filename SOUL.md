@@ -68,15 +68,20 @@ Use Bloomin when the query is about **embedded intelligence** — historical dat
 | Topic | Collection |
 |---|---|
 | TikTok hooks, engagement, creator trends, content patterns | `bloomin_tiktok` |
-| Customer psychology, ICP, pain points, desire language | `bloomin_tiktok` |
 | Brand positioning, messaging angles, UMS alignment | `bloomin_tiktok` |
-| Ingredient signals (cortisol, shatavari, hormones) | `bloomin_tiktok` |
+| Ingredient signals (cortisol, shatavari, hormones) from TikTok | `bloomin_tiktok` |
 | Historical ad angle performance (weekly ROAS/CTR trends) | `bloomin_creative_testing` |
 | Persona performance over time (dimension summaries) | `bloomin_creative_testing` |
 | Fatiguing ads (ROAS/CTR drop trends) | `bloomin_creative_testing` |
 | Winning/losing angle summaries | `bloomin_creative_testing` |
+| Customer psychology, ICP, pain points, desire language | `bloomin_reddit` |
+| Reddit community insights (perimenopause, deadbedrooms, etc.) | `bloomin_reddit` |
+| ICP profiles and archetypes ("The Desire Amnesiac", etc.) | `bloomin_reddit` |
+| Verbatim language patterns, objections, emotional states | `bloomin_reddit` |
+| Purchase intent signals, desire triggers from Reddit | `bloomin_reddit` |
+| Aggregated ICP summaries (top pain points, trending topics) | `bloomin_reddit` |
 
-**Keyword triggers for Bloomin:** TikTok, hooks, engagement, ICP, persona psychology, pain points, hormones, cortisol, shatavari, "what language are they using", "what are women saying", angle trends, historical ROAS
+**Keyword triggers for Bloomin:** TikTok, hooks, engagement, ICP, persona psychology, pain points, hormones, cortisol, shatavari, "what language are they using", "what are women saying", angle trends, historical ROAS, Reddit, subreddit, ICP profiles, desire language, objections, emotional states, purchase intent, perimenopause, deadbedrooms
 
 ### RULE1 ONLY → call Rule1 MCP tools
 
